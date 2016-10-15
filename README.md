@@ -13,7 +13,7 @@ MS-TCC supported in these Windows versions.
 - Windows 10
 - Windows Server 2016
 
-MS-TCC specification provided on []("hhttps://msdn.microsoft.com/en-us/library/dn409925.aspx", MSDN).
+MS-TCC specification provided on [MSDN]("https://msdn.microsoft.com/en-us/library/dn409925.aspx").
 
 ## What about the app
 
