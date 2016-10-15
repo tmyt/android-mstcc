@@ -6,31 +6,22 @@
         app:title="Service Configuration">
 
         <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:title="Switch preference"
-            android:key="switch_preference_1"
             app:defaultValue="false"
             app:key="pref_enabled"
             app:title="Enable Service"
             app:summaryOn="Enabled MS-TCC Service"
             app:summaryOff="Disabled MS-TCC Service" />
         <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:title="Switch preference"
-            android:key="switch_preference_2"
             app:defaultValue="false"
             app:key="pref_enable_on_boot"
             app:title="Start service on boot"
             app:dependency="pref_enabled"
             app:summaryOn="Start service automatically on boot"
-            app:summaryOff="Setvice does not start on boot" />
+            app:summaryOff="Service does not start on boot" />
     </PreferenceCategory>
     <PreferenceCategory android:title="Preference category"
         app:title="About app">
         <Preference
-            android:defaultValue="false"
-            android:title="Check box preference"
-            android:key="check_box_preference_1"
             app:title="MS-TCC Service for Android"
             app:summary="version 1.0" />
 
