@@ -1,6 +1,6 @@
 # MS-TCC for Android
 
-This app bring MS-TCC(Microsoft Tethering Control Channel Protocol) to Android.
+This app bring MS-TCC(Microsoft Tethering Control Channel Protocol) to Android. You can switch on Wifi Tethering from your Windows 10 PC.
 
 ## What about MS-TCC
 
