@@ -22,6 +22,7 @@ public class MsTccServer {
     private UUID MsTccUuid = UUID.fromString(MsTccUuidString);
     private BluetoothAdapter mAdapter;
     private WifiManagerReflection mWifiManagerRef;
+    private Thread mServerThread;
 
     public MsTccServer(BluetoothAdapter adapter, WifiManagerReflection wifiManagerRef) {
         mAdapter = adapter;
@@ -29,17 +30,26 @@ public class MsTccServer {
     }
 
     public void start() {
-        Thread thread = new Thread(new Runnable() {
+        if (mServerThread != null) return;
+        mServerThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 serverThread();
             }
         });
-        thread.start();
+        mServerThread.start();
+        Log.i("MS-TCC", "Server thread started");
+    }
+
+    public void stop() {
+        if (mServerThread == null) return;
+        mServerThread.interrupt();
+        mServerThread = null;
+        Log.i("MS-TCC", "Server thread stopping");
     }
 
     private void serverThread() {
-        while (true) {
+        while (!Thread.interrupted()) {
             try {
                 WifiConfiguration config = mWifiManagerRef.getWifiApConfiguration();
                 BluetoothServerSocket socket = mAdapter.listenUsingRfcommWithServiceRecord(config.SSID, MsTccUuid);
@@ -56,6 +66,10 @@ public class MsTccServer {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+            try{
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
             }
         }
     }
