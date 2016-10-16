@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -23,9 +24,13 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".services.MsTccService" />
+        <service android:name=".services.MsTccService" android:process=":service"/>
 
-        <receiver android:name=".receivers.BootReceiver" android:enabled="false" />
+        <receiver android:name=".receivers.BootReceiver" android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
